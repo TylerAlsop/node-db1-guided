@@ -18,14 +18,24 @@ router.get("/", async (req, res, next) => {
 })
 
 router.get("/:id", async (req, res, next) => {
-
+    try {
+        // SQL Command: SELECT * FROM "messages" WHERE "id" = ':id'
+        const messageById = await db.select("*").from("messages").where("id", req.params.id)
+        res.json(messageById)
+    } catch (err) {
+        next(err)
+    }
 })
 
 
 /////////////// POST ///////////////
 
 router.post("/", async (req, res, next) => {
+    try {
 
+    } catch (err) {
+        next(err)
+    }
 })
 
 /////////////// PUT ///////////////
